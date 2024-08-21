@@ -44,10 +44,11 @@ app.post("/products", async (req, res) => {
 
 app.put("/products/:id", async (req, res) => {
   try {
+    const product = await Product.findById(req.params.id)
     if(!product) {
       res.status(400)
     }
-    const product = await Product.findById 
+    const updatedProduct = await Product 
   } catch (error) {
     
   }
