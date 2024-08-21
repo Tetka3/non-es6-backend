@@ -42,6 +42,17 @@ app.post("/products", async (req, res) => {
     }
   })
 
+app.put("/products/:id", async (req, res) => {
+  try {
+    if(!product) {
+      res.status(400)
+    }
+    const product = await Product.findById 
+  } catch (error) {
+    
+  }
+})
+
 mongoose.connect('mongodb+srv://njematitus:eQ7Vtj94osH2cKIF@cluster0.cwx5g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => {
     console.log('Connected!')
