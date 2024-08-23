@@ -30,9 +30,7 @@ app.get("/products/:id", async (req, res) => {
   }
 })
 
-app.post("/products", async (req, res) => {   
-    // console.log(req.body)
-    // res.send(req.body) 
+app.post("/products", async (req, res) => {  
     try {
       const product = await Product.create(req.body);
       res.status(200).json(product);    
