@@ -44,9 +44,9 @@ app.post("/products", async (req, res) => {
 
 app.put("/products/:id", async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findByIdAndUpdate(req.params.id)
     if(!product) {
-      res.status(400)
+      return res.status(400)
     }
     const updatedProduct = await Product 
   } catch (error) {
