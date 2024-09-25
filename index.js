@@ -1,8 +1,12 @@
 const dotenv = require('dotenv');
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const Product = require("./models/productModel")
+
+const port = process.env.PORT || 3000;
+const MONGO_URL = process.env.MONGO_URL;
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
@@ -54,10 +58,9 @@ app.put("/products/:id", async (req, res) => {
   }
 })
 
-mongoose.connect('mongodb+srv://njematitus:eQ7Vtj94osH2cKIF@cluster0.cwx5g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(MONGO_URL)
   .then(() => {
-    console.log('Connected!')
-    const port = process.env.PORT || 3000
+    console.log('Connected!')    
     app.listen(port, () => console.log(`Listening on port ${port}`))
   }).catch( (error) => {
     console.log(error);
